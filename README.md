@@ -12,7 +12,6 @@
     - [0.6.2. Integrante 2](./0/0.6/0.6.2/0.6.2.md)
     - [0.6.3. Integrante 3](./0/0.6/0.6.3/0.6.3.md)
     - [0.6.4. Integrante 4](./0/0.6/0.6.4/0.6.4.md)
-      - [0.6.4.1. Demo - Integrante 4](./0/0.6/0.6.4/0.6.4/demo/)   
     - [0.6.5. Integrante 5](./0/0.6/0.6.5/0.6.5.md)
 - [1. Caso de Negocio](./1/1.md)
   - [1.1. Generalidades](./1/1.1/1.1.md)
