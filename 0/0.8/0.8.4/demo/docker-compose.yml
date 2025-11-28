@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+
+  postgres-db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: demo_db
+    ports:
+      - "5433:5432"
+
+
+  flyway:
+    image: flyway/flyway
+    command: -url=jdbc:postgresql://postgres-db:5432/demo_db -user=user -password=password -connectRetries=60 migrate
+    volumes:
+      - ./sql:/flyway/sql 
+    depends_on:
+      - postgres-db
