@@ -1,0 +1,48 @@
+services:
+  postgres_users:
+    image: postgres:15-alpine
+    container_name: nexus_postgres
+    environment:
+      POSTGRES_USER: arqnexsoft
+      POSTGRES_PASSWORD: arqnexsoft06
+      POSTGRES_DB: NexusUsersDB
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  # Base de datos para Ideas y Mensajes (MongoDB)
+  mongo_ideas:
+    image: mongo:6.0
+    container_name: nexus_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # Message Broker (RabbitMQ)
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: nexus_rabbitmq
+    ports:
+      - "5672:5672"   # Puerto AMQP
+      - "15672:15672" # Puerto UI Management
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  # Search Engine (Elasticsearch)
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.10
+    container_name: nexus_elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+
+volumes:
+  postgres_data:
+  mongo_data:
+  elasticsearch_data:

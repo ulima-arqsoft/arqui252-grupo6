@@ -1,0 +1,12 @@
+{
+    "$schema": "https://railway.app/railway.schema.json",
+    "build": {
+        "builder": "NIXPACKS",
+        "buildCommand": "turbo run build --filter=api-gateway"
+    },
+    "deploy": {
+        "startCommand": "node apps/backend/api-gateway/dist/main.js",
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10
+    }
+}
