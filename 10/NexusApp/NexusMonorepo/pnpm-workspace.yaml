@@ -1,0 +1,8 @@
+packages:
+  - "apps/mobile"
+  - "apps/backend/*"
+  - "apps/backend/api-gateway"
+  - "apps/backend/ideas-service"
+  - "apps/backend/messages-service"
+  - "apps/backend/users-service"
+  - "packages/*"
